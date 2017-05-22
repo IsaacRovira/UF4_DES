@@ -66,7 +66,7 @@ $indices = array(
 			if($query && $query['status'] == 'success') {
 			  $pais = $query['country'].', '.$query['city'];
 			} else {
-			  $pais = 'Unable to get location';
+			  $pais = 'Ha sido imposible obtener la localización';
 			}
 			
 			print("<li> Idioma: ".split('[- ,]',$_SERVER['HTTP_ACCEPT_LANGUAGE'])[1]."</li>\n");
