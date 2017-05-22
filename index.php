@@ -3,7 +3,6 @@
 if(!session_id()){
 	session_start();
 }
-
 $indices = array(
 //'PHP_SELF', 
 //'argv', 
@@ -50,7 +49,7 @@ $indices = array(
 
 <html>
     <head>
-        <link rel="stylesheet" type="text/css" href="css/estilo.css">
+        <link rel="stylesheet" type="text/css" href="./css/estilo.css">
         <meta charset="UTF-8">
         <title>Información Sistema</title>        
     </head>
@@ -62,18 +61,25 @@ $indices = array(
 		<div id="main_frame">
 			
 			<?php
-			$browser = get_browser(null,return_array);
-			print("<ul>\n");
-			foreach($indices as $param){
-				if(isset($_SERVER[$param])){
-					print("<li>".$_SERVER[$param]."</li>\n");
-				}				
+			$ip = $_SERVER['REMOTE_ADDR'];
+			$query = @unserialize(file_get_contents('http://ip-api.com/php/'.$ip));
+			if($query && $query['status'] == 'success') {
+			  $pais = $query['country'].', '.$query['city'];
+			} else {
+			  $pais = 'Unable to get location';
 			}
-			foreach($browser as $br){
-				print("<li>".$br."</li>\n");
-			}				
-			print("</ul>\n");
 			
+			print("<li> Idioma: ".split('[- ,]',$_SERVER['HTTP_ACCEPT_LANGUAGE'])[1]."</li>\n");
+			
+			print("<li> Dirección IP: ".$ip."</lI>\n");
+			
+			print("<li> País: ".$pais."</li>\n");
+			
+			print("<li> Sistema Operativo: ".split('[(;]',$_SERVER['HTTP_USER_AGENT'])[1]." ".split('[ ]',$_SERVER['HTTP_USER_AGENT'])[2]."</li>\n");
+			
+			print("<li> Browser: ".split('[ ]',$_SERVER['HTTP_USER_AGENT'])[10]."</li>\n");
+			
+			print("</ul>\n");
 			?>		
 			
 		</div>

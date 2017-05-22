@@ -1,10 +1,25 @@
 boyd{
 	position: relative;
-	display: block;
+	display: block;	
 }
 
 .header{
 	border:solid black;
 	border-width: thin;
-	background-color: aliceblue;	
+	background-color: aliceblue;
+	padding: 0em;
+	display: block;
+}
+#main_frame{
+	font-stretch: expanded;
+	border-style: double;
+	border-width: thick;
+	background-color: lightgoldenrodyellow;
+	padding: 1em;
+}
+.footer{
+	padding: 0;
+	font-size: small;
+	border: solid black;
+	background-color: aliceblue;
 }
