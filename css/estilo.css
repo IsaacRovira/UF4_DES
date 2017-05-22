@@ -1,0 +1,10 @@
+boyd{
+	position: relative;
+	display: block;
+}
+
+.header{
+	border:solid black;
+	border-width: thin;
+	background-color: aliceblue;	
+}
